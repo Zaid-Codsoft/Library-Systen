@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="New" onAction="#newBook"/>
+                    <MenuItem text="Open" onAction="#openBook"/>
+                    <MenuItem text="Save" onAction="#saveBook"/>
+                    <MenuItem text="Save As" onAction="#saveAsBook"/>
+                    <MenuItem text="Exit" onAction="#exitApplication"/>
+                </Menu>
+                <Menu text="Edit">
+                    <MenuItem text="Add Book" onAction="#addBook"/>
+                    <MenuItem text="Edit Book" onAction="#editBook"/>
+                    <MenuItem text="Delete Book" onAction="#deleteBook"/>
+                </Menu>
+                <Menu text="View">
+                    <MenuItem text="View All Books" onAction="#viewAllBooks"/>
+                    <MenuItem text="Search Books"/>
+                </Menu>
+            </MenuBar>
+            <HBox spacing="10">
+                <Label text="Search:"/>
+                <TextField fx:id="searchField"/>
+                <Button text="Search" onAction="#searchBooks"/>
+            </HBox>
+             <HBox spacing="10">
+                <Label text="Title:"/>
+                <TextField fx:id="titleField"/>
+                <Label text="Author:"/>
+                <TextField fx:id="authorField"/>
+                <Label text="ISBN:"/>
+                <TextField fx:id="isbnField"/>
+                <Label text="Available:"/>
+                <CheckBox fx:id="availabilityCheckBox"/>
+                <Button text="Add" onAction="#addBook"/>
+                <Button text="Edit" onAction="#editBook"/>
+                <Button text="Delete" onAction="#deleteBook"/>
+                <Button text="View All" onAction="#viewAllBooks"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView" editable="true">
+            <columns>
+                <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0">
+                    <cellValueFactory><PropertyValueFactory property="title"/></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="authorColumn" text="Author" prefWidth="200.0">
+                    <cellValueFactory><PropertyValueFactory property="author"/></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="200.0">
+                    <cellValueFactory><PropertyValueFactory property="isbn"/></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="availabilityColumn" text="Availability" prefWidth="100.0">
+                    <cellValueFactory><PropertyValueFactory property="available"/></cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <Label fx:id="statusBar" text="Status Bar" />
+    </bottom>
+</BorderPane>
